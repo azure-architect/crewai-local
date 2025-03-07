@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   app:
     build:
@@ -11,20 +10,6 @@ services:
       - ./config:/app/config
     environment:
       - ENVIRONMENT=production
-    depends_on:
-      - supabase
     restart: unless-stopped
-
-  supabase:
-    image: supabase/supabase-postgres:latest
-    ports:
-      - "5432:5432"
-    volumes:
-      - supabase-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-    restart: unless-stopped
-
 volumes:
   supabase-data:
